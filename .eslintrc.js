@@ -5,6 +5,13 @@ module.exports = {
     sourceType: "module"
   },
   rules: {
-    "no-var": "error"
+    "no-var": "error",
+    semi: "error",
+    quotes: "error"
+  },
+  env: {
+    browser: true,
+    node: true,
+    es6: true
   }
 };
