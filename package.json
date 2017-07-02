@@ -1,0 +1,14 @@
+{
+  "name": "neighborhood-map",
+  "version": "0.0.1",
+  "description": "Udacity neighborhood map project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Meine Shiraishi",
+  "license": "MIT",
+  "dependencies": {
+    "knockout": "^3.4.2"
+  }
+}
