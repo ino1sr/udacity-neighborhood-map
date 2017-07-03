@@ -32,16 +32,20 @@
     </div>
     <div class="wrapper">
       <div class="header">
-        header
+        <div class="header-title">
+          Meine's neighborhood locations map
+        </div>
+        <input type="text" placeholder="type here to filter locations" class="filter-field" >
       </div>
-      <div class="list-map">
+      <div class="content">
         <div class="list">
-          results
           <div data-bind="visible: loadingLocations">
-            Loading spinner
+            <div class="loading-spinner">
+              Loading...
+            </div>
           </div>
           <div data-bind="visible: !loadingLocations()">
-            Not loading
+            location results
           </div>
         </div>
         <div class="map">

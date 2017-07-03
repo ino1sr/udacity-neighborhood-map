@@ -23,9 +23,99 @@ body, html {
   bottom: 0;
   z-index: 2;
 
-  background: black;
-  display: flex;
   opacity: 1;
   transition: opacity 1s;
+
+  background: black;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
+/* Header strip */
+.header {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Title within the heaer */
+.header-title {
+  font-size: 24px;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+/* Filter field to search for locations */
+.filter-field {
+  appearance: none;
+  border: none;
+  border-bottom: 1px dashed #53b8bd;
+  background: black;
+  padding: 5px 10px;
+  font-size: 18px;
+  outline: none;
+  color: white;
+
+  &::placeholder {
+    color: #3f7c7f;
+  }
+
+  &:focus {
+    border-bottom: 1px solid white;
+  }
+}
+
+/* Main content, whole page except header */
+.content {
+  display: flex;
+  flex-grow: 1;
+}
+
+/* The result list, within content */
+.list {
+  width: 250px;
+  padding: 10px;
+  background: #222;
+}
+
+/* The google map itself, within content */
+.map {
+  background: #999;
+  flex-grow: 1;
+}
+
+/* Simple home made loading spinner, which is not spinning:) */
+.loading-spinner {
+  position: relative;
+  padding-top: 70px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 300;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    margin-left: -10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background: #53b8bd;
+    animation: pulse 1.6s infinite ease-out;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.7;
+    transform: scale(0.2, 0.2);
+  }
+
+  100% {
+    opacity: 0.0;
+    transform: scale(3, 3);
+  }
+}
