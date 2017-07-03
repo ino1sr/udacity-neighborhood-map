@@ -9,7 +9,14 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
+      { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
+      { test: /\.css$/,
+        use: [
+          'style-loader',
+          { loader: 'css-loader', options: { importLoaders: 1 } },
+          'postcss-loader'
+        ]
+      }
     ]
   },
   plugins: [
@@ -18,7 +25,6 @@ module.exports = {
     ])
   ],
   devServer: {
-    inline: false,
     publicPath: '/',
     disableHostCheck: true,
     contentBase: path.resolve(__dirname, "build")

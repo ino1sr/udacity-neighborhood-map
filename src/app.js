@@ -2,9 +2,19 @@
 
 // Google API key: AIzaSyBFPCWq8IhXt58hnuSbRqgXT-WyMr-ZcqQ
 
-import * as knockout from "knockout"
+require("./app.css");
 
-let a = 3;
+import * as ko from "knockout";
 
-console.log(knockout)
-console.log(a)
+
+class ViewModel {
+  constructor() {
+    this.loadingLocations = ko.observable(true);
+  }
+}
+
+const model = new ViewModel();
+
+ko.applyBindings(model);
+
+setTimeout(() => model.loadingLocations(false), 1000);

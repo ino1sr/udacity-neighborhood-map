@@ -1,0 +1,31 @@
+/* Reset css to ensure browser consistency */
+@import "reset.css";
+@import "system-font-css/system-font.css";
+
+body, html {
+  font-size: 16px;
+  color: white;
+  font-family: system-ui;
+}
+
+/* Hide loading-wrapper */
+.loading-wrapper {
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+/* Main wrapper to ensure app is fullscreen */
+.wrapper {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+
+  background: black;
+  display: flex;
+  opacity: 1;
+  transition: opacity 1s;
+}
+

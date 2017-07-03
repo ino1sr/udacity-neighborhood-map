@@ -4,7 +4,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Meine's neighborhood map</title>
     <script src="/bundle.js" defer></script>
+    <!-- Put some style here while the bundle is loading -->
+    <style>
+      .wrapper {
+        opacity: 0;
+      }
+      .loading-wrapper {
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 2;
+
+        font-family: sans-serif;
+        font-size: 24px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
   </head>
   <body>
+    <div class="loading-wrapper">
+      Loading application, please wait.
+    </div>
+    <div class="wrapper">
+      <div class="header">
+        header
+      </div>
+      <div class="list-map">
+        <div class="list">
+          results
+          <div data-bind="visible: loadingLocations">
+            Loading spinner
+          </div>
+          <div data-bind="visible: !loadingLocations()">
+            Not loading
+          </div>
+        </div>
+        <div class="map">
+          map
+        </div>
+      </div>
+    </div>
   </body>
 </html>
