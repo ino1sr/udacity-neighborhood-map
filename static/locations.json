@@ -1,4 +1,21 @@
 {
   "locations": [
+    ["Tokyo Skytree", 35.7011325, 139.8098284],
+    ["Asakusa", 35.7125987, 139.7965039],
+    ["Ueno ZOO", 35.71597, 139.7709914],
+    ["Imperial Palace", 35.6847746, 139.7519694],
+    ["Tokyo Metropolitan Government Building", 35.6902864, 139.6911774],
+    ["Tokyo Metropolitan Theater", 35.7300702, 139.7070384],
+    ["Yoyogi Park", 35.6715318, 139.6939594],
+    ["Tokyo Dome", 35.7031843, 139.7483576],
+    ["Shibuya", 35.6591605, 39.6976171],
+    ["Foutain Square", 35.620705, 139.769146],
+    ["Legoland", 35.6292535, 139.7764242],
+    ["Rainbow Bridge", 35.6357488, 139.7633903],
+    ["Hamarikyu Gardens", 35.6562112, 139.7592459],
+    ["Tokyo Main Station", 35.6814129, 139.764397],
+    ["Tokyo Disneyland", 35.6328374, 139.8801803],
+    ["Tokyo Disneysea", 35.6261461, 139.8842073],
+    ["Tsukiji Fish Market", 35.6654618, 139.7706222]
   ]
 }
