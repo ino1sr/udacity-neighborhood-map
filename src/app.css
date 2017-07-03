@@ -201,8 +201,16 @@ body, html {
   padding: 10px;
   border-bottom: 1px solid #444;
 
-  &:hover {
-    background: #555;
+  &:not(.selected) {
+    &:hover {
+      background: #555;
+    }
+  }
+
+  &.selected {
+    background: #444;
+    border-left: 5px solid #53b8bd;
+    padding-left: 5px;
   }
 }
 
@@ -215,14 +223,51 @@ body, html {
   opacity: 0.9;
 }
 
+/* Info window content */
+.info-content {
+  color: black;
+}
 
-@media (max-width: 600px) {
+/* Wikipedia info */
+.info-wiki {
+  margin-top: 10px;
+  font-style: italic;
+  display: flex;
+}
+
+.info-wiki-image {
+  max-height: 100px;
+  width: 100px;
+}
+
+.info-wiki-text {
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+}
+
+.info-wiki-title {
+  font-size: 18px;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.info-wiki-extract {
+  text-align: justify;
+}
+
+
+@media (max-width: 1000px) {
   .header-bottom {
     display: flex;
     align-self: stretch;
   }
   .header-hamburger {
     display: block;
+  }
+  .map {
+    z-index: 9;
   }
   .list {
     width: 220px;
@@ -233,8 +278,16 @@ body, html {
     bottom: 0;
     transition: left .5s;
     box-shadow: 0 0 16px black;
+    z-index: 10;
   }
   .list.visible {
     left: 0;
+  }
+  .info-wiki-image {
+    max-height: 50px;
+    width: 50px;
+  }
+  .info-wiki-text {
+    max-width: 200px;
   }
 }

@@ -62,7 +62,8 @@
           </div>
           <div data-bind="visible: ready">
             <ul data-bind="foreach: locations">
-              <li data-bind="text: name"
+              <li data-bind="text: name, click: $parent.selectLocation,
+                css: { selected: $data === $parent.selectedLocation() }"
                 class="list-item"></li>
             </ul>
           </div>
@@ -71,9 +72,7 @@
             No result.
           </div>
         </div>
-        <div class="map">
-          map
-        </div>
+        <div class="map"></div>
       </div>
     </div>
   </body>
