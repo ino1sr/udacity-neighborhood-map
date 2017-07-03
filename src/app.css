@@ -38,6 +38,7 @@ body, html {
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex-shrink: 0;
 }
 
 /* Title within the heaer */
@@ -57,6 +58,7 @@ body, html {
   font-size: 18px;
   outline: none;
   color: white;
+  transition: opacity 200ms;
 
   &::placeholder {
     color: #3f7c7f;
@@ -64,6 +66,14 @@ body, html {
 
   &:focus {
     border-bottom: 1px solid white;
+  }
+
+  &:disabled {
+    opacity: 0.2;
+  }
+
+  &:not(:disabled) {
+    opacity: 1;
   }
 }
 
@@ -76,8 +86,8 @@ body, html {
 /* The result list, within content */
 .list {
   width: 250px;
-  padding: 10px;
   background: #222;
+  overflow: auto;
 }
 
 /* The google map itself, within content */
@@ -87,6 +97,7 @@ body, html {
 }
 
 /* Simple home made loading spinner, which is not spinning:) */
+/* Inspired by https://github.com/tobiasahlin/SpinKit but simpler */
 .loading-spinner {
   position: relative;
   padding-top: 70px;
@@ -118,4 +129,39 @@ body, html {
     opacity: 0.0;
     transform: scale(3, 3);
   }
+}
+
+/* Display a message when we cannot load locations */
+.loading-error {
+  font-weight: 300;
+  text-align: center;
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.loading-error-details {
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* Result list items */
+.list-item {
+  line-height: 1.2em;
+  cursor: pointer;
+  padding: 10px;
+  border-bottom: 1px solid #444;
+
+  &:hover {
+    background: #555;
+  }
+}
+
+/* Displayed when the list is empty (no result) */
+.list-empty {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 300;
+  padding: 20px 10px;
+  opacity: 0.9;
 }

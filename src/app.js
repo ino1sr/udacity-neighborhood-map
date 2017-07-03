@@ -5,11 +5,57 @@
 require("./app.css");
 
 import * as ko from "knockout";
+import * as axios from "axios";
 
 
 class ViewModel {
   constructor() {
     this.loadingLocations = ko.observable(true);
+    this.loadingError = ko.observable(null);
+    this.allLocations = ko.observableArray([]);
+    this.filter = ko.observable("");
+
+    this.filter.extend({ rateLimit: 500 });
+
+    this.ready = ko.computed(() => {
+      return !this.loadingError() && !this.loadingLocations();
+    });
+
+    this.locations = ko.computed(() => {
+      const filter = this.filter().toLowerCase();
+
+      const locs = this.allLocations()
+        .filter((loc) => {
+          return loc.name.toLowerCase().indexOf(filter) >= 0;
+        });
+
+      return locs.sort((a, b) => {
+        return a.name
+          .toLowerCase()
+          .localeCompare(b.name.toLowerCase());
+      });
+    });
+  }
+
+  loadLocations() {
+    this.loadingError(null);
+    axios.get("/locations.json")
+      .then((response) => {
+        // Convert array locations into objects
+        this.allLocations(response.data.locations.map((loc) => {
+          return {
+            name: loc[0],
+            lat: loc[1],
+            lng: loc[2],
+          };
+        }));
+      })
+      .catch((error) => {
+        this.loadingError(error.message);
+      })
+      .then(() => {
+        this.loadingLocations(false);
+      });
   }
 }
 
@@ -17,4 +63,5 @@ const model = new ViewModel();
 
 ko.applyBindings(model);
 
-setTimeout(() => model.loadingLocations(false), 1000);
+
+model.loadLocations();

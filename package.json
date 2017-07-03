@@ -11,6 +11,7 @@
   "author": "Meine Shiraishi",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.16.2",
     "knockout": "^3.4.2",
     "system-font-css": "^2.0.0"
   },

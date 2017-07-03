@@ -35,7 +35,10 @@
         <div class="header-title">
           Meine's neighborhood locations map
         </div>
-        <input type="text" placeholder="type here to filter locations" class="filter-field" >
+        <input type="text"
+        placeholder="type here to filter locations"
+        class="filter-field"
+        data-bind="enable: ready, textInput: filter">
       </div>
       <div class="content">
         <div class="list">
@@ -44,8 +47,22 @@
               Loading...
             </div>
           </div>
-          <div data-bind="visible: !loadingLocations()">
-            location results
+          <div data-bind="visible: loadingError">
+            <div class="loading-error">
+              <div>Oups, an error occured!</div>
+              <div class="loading-error-details"
+                   data-bind="text: loadingError"></div>
+            </div>
+          </div>
+          <div data-bind="visible: ready">
+            <ul data-bind="foreach: locations">
+              <li data-bind="text: name"
+                class="list-item"></li>
+            </ul>
+          </div>
+          <div data-bind="visible: ready() && locations().length === 0"
+               class="list-empty">
+            No result.
           </div>
         </div>
         <div class="map">
