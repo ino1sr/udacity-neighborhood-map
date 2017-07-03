@@ -245,6 +245,7 @@ body, html {
   display: flex;
   flex-direction: column;
   padding-left: 10px;
+  font-size: 14px;
 }
 
 .info-wiki-title {
@@ -255,6 +256,12 @@ body, html {
 
 .info-wiki-extract {
   text-align: justify;
+}
+
+.info-wiki-attribution {
+  font-style: italic;
+  margin-top: 10px;
+  font-size: 12px;
 }
 
 
@@ -289,5 +296,9 @@ body, html {
   }
   .info-wiki-text {
     max-width: 200px;
+    font-size: 11px;
+  }
+  .info-wiki-attribution {
+    font-size: 11px;
   }
 }

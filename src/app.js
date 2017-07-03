@@ -73,14 +73,6 @@ class ViewModel {
       this.openInfoWindow(loc)
     }
 
-    this.selectLocationWithoutBounce = (loc) => {
-      if (this.selectedLocation()) {
-        this.selectedLocation().marker.setAnimation(null)
-      }
-      this.selectedLocation(loc)
-      this.openInfoWindow(loc)
-    }
-
     this.openInfoWindow = (location) => {
       this.infoWindow.setPosition(location)
       this.infoWindow.setContent(`
@@ -114,6 +106,7 @@ class ViewModel {
           `)
         } else {
           const img = loc.wikipediaInfo.thumbnail.source
+          const pid = loc.wikipediaInfo.pageid
           const title = loc.wikipediaInfo.title
           const extract = loc.wikipediaInfo.extract
           this.infoWindow.setContent(`
@@ -127,6 +120,12 @@ class ViewModel {
                   </div>
                   <div class="info-wiki-extract">
                   ${extract}
+                  </div>
+                  <div class="info-wiki-attribution">
+                    Extracted from wikipedia.<br>
+                    <a href="https://en.wikipedia.org/?curid=${pid}" target="_blank">
+                      View on wikipedia.
+                    </a>
                   </div>
                 </div>
               </div>
@@ -209,7 +208,7 @@ class ViewModel {
           });
           loc.marker = m;
           m.addListener("click", () => {
-            this.selectLocationWithoutBounce(loc)
+            this.selectLocation(loc)
           })
           this.markers.push(m);
         });
