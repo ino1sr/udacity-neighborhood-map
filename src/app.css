@@ -237,7 +237,7 @@ body, html {
 
 .info-wiki-image {
   max-height: 100px;
-  width: 100px;
+  max-width: 100px;
 }
 
 .info-wiki-text {
@@ -285,7 +285,7 @@ body, html {
   }
   .info-wiki-image {
     max-height: 50px;
-    width: 50px;
+    max-width: 50px;
   }
   .info-wiki-text {
     max-width: 200px;
