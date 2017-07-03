@@ -35,13 +35,19 @@
         <div class="header-title">
           Meine's neighborhood locations map
         </div>
-        <input type="text"
-        placeholder="type here to filter locations"
-        class="filter-field"
-        data-bind="enable: ready, textInput: filter">
+        <div class="header-bottom">
+          <div class="header-hamburger"
+               data-bind="click: toggleMenu">
+               <div class="header-hamburger-icon"></div>
+          </div>
+          <input type="text"
+                 placeholder="type here to filter locations"
+                 class="filter-field"
+                 data-bind="enable: ready, textInput: filter">
+        </div>
       </div>
       <div class="content">
-        <div class="list">
+        <div class="list" data-bind="css: { visible: menuVisible}">
           <div data-bind="visible: loadingLocations">
             <div class="loading-spinner">
               Loading...

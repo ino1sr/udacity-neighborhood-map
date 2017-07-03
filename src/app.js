@@ -13,8 +13,10 @@ class ViewModel {
     this.loadingLocations = ko.observable(true);
     this.loadingError = ko.observable(null);
     this.allLocations = ko.observableArray([]);
+
     this.filter = ko.observable("");
 
+    /* Debounce filtering */
     this.filter.extend({ rateLimit: 500 });
 
     this.ready = ko.computed(() => {
@@ -35,6 +37,15 @@ class ViewModel {
           .localeCompare(b.name.toLowerCase());
       });
     });
+
+    this.menuVisible = ko.observable(false);
+
+    /* When we search in the field, ensure the results are visible */
+    this.filter.subscribe(() => this.menuVisible(true))
+  }
+
+  toggleMenu() {
+    this.menuVisible(!this.menuVisible());
   }
 
   loadLocations() {
