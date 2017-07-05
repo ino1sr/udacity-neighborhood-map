@@ -20,6 +20,8 @@ class ViewModel {
     this.allLocations = ko.observableArray([]);
     this.selectedLocation = ko.observable(null);
 
+    this.mapLoadError = ko.observable(false);
+
     this.filter = ko.observable("");
 
     /* Debounce filtering */
@@ -69,7 +71,7 @@ class ViewModel {
 
       loc.marker.setAnimation(google.maps.Animation.BOUNCE);
       setTimeout(() => loc.marker.setAnimation(null), 2100);
-      this.map.setCenter(loc);
+      this.map.panTo(loc);
 
       this.openInfoWindow(loc);
     };
@@ -206,6 +208,10 @@ class ViewModel {
           this.menuVisible(false);
         });
 
+        google.maps.event.addDomListener(window, 'resize', () => {
+            this.map.fitBounds(this.bounds);
+        });
+
         this.allLocations().forEach((loc) => {
           const m = new google.maps.Marker({
             position: loc,
@@ -228,8 +234,11 @@ class ViewModel {
       const gmapScript = document.createElement("script");
       const src =`https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAP_API_KEY}&callback=initMap`;
 
-      gmapScript.setAttribute("defer", true);
+      gmapScript.setAttribute("async", true);
       gmapScript.setAttribute("src", src);
+      gmapScript.onerror = () => {
+          this.mapLoadError(true)
+      }
 
       document.head.appendChild(gmapScript);
     };
