@@ -208,7 +208,7 @@ class ViewModel {
           this.menuVisible(false);
         });
 
-        google.maps.event.addDomListener(window, 'resize', () => {
+        google.maps.event.addDomListener(window, "resize", () => {
             this.map.fitBounds(this.bounds);
         });
 
@@ -237,8 +237,8 @@ class ViewModel {
       gmapScript.setAttribute("async", true);
       gmapScript.setAttribute("src", src);
       gmapScript.onerror = () => {
-          this.mapLoadError(true)
-      }
+          this.mapLoadError(true);
+      };
 
       document.head.appendChild(gmapScript);
     };
