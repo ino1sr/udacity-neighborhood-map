@@ -69,6 +69,7 @@ class ViewModel {
 
       loc.marker.setAnimation(google.maps.Animation.BOUNCE)
       setTimeout(() => loc.marker.setAnimation(null), 2100)
+      this.map.setCenter(loc)
 
       this.openInfoWindow(loc)
     }
