@@ -6,7 +6,7 @@ Neighborood Map is a single page application featuring a map of my neighborhood
 back in Japan. It includes a few locations I like.
 
 Each location shows the closest Wikipedia article it can find. If no article
-is geolocalized within 100m, then no article is shown.
+is geolocalized within 200 meters, then no article is shown.
 
 The application is visible for vieweing here:
 

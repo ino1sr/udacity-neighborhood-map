@@ -136,7 +136,7 @@ class ViewModel {
       }
 
       if (loc.wikipediaInfo === undefined) {
-        /* Find the wiki page within 100meter of the place */
+        /* Find the wiki page within 200meter of the place */
         const url = "https://en.wikipedia.org/w/api.php?origin=*&" +
                     "format=json&action=query&" +
                     "prop=pageimages|info|extracts&exlimit=1&explaintext=1&" +
