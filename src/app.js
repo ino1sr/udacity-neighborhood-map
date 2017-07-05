@@ -63,38 +63,38 @@ class ViewModel {
      */
     this.selectLocation = (loc) => {
       if (this.selectedLocation()) {
-        this.selectedLocation().marker.setAnimation(null)
+        this.selectedLocation().marker.setAnimation(null);
       }
-      this.selectedLocation(loc)
+      this.selectedLocation(loc);
 
-      loc.marker.setAnimation(google.maps.Animation.BOUNCE)
-      setTimeout(() => loc.marker.setAnimation(null), 2100)
-      this.map.setCenter(loc)
+      loc.marker.setAnimation(google.maps.Animation.BOUNCE);
+      setTimeout(() => loc.marker.setAnimation(null), 2100);
+      this.map.setCenter(loc);
 
-      this.openInfoWindow(loc)
-    }
+      this.openInfoWindow(loc);
+    };
 
     this.openInfoWindow = (location) => {
-      this.infoWindow.setPosition(location)
+      this.infoWindow.setPosition(location);
       this.infoWindow.setContent(`
         <div class="info-content">
           <div class="info-name">${location.name}</div>
           <div class="info-wiki">Loading...</div>
         </div>
-      `)
-      this.infoWindow.open(this.map)
-      this.loadWikipediaInfo()
-    }
+      `);
+      this.infoWindow.open(this.map);
+      this.loadWikipediaInfo();
+    };
 
     this.toggleMenu = () => {
       this.menuVisible(!this.menuVisible());
-    }
+    };
 
     this.loadWikipediaInfo = () => {
-      const loc = this.selectedLocation()
+      const loc = this.selectedLocation();
 
       if (!loc) {
-        return
+        return;
       }
 
       const render = () => {
@@ -104,12 +104,12 @@ class ViewModel {
               <div class="info-name">${loc.name}</div>
               <div class="info-wiki">No wikipedia page found.</div>
             </div>
-          `)
+          `);
         } else {
-          const img = loc.wikipediaInfo.thumbnail.source
-          const pid = loc.wikipediaInfo.pageid
-          const title = loc.wikipediaInfo.title
-          const extract = loc.wikipediaInfo.extract
+          const img = loc.wikipediaInfo.thumbnail.source;
+          const pid = loc.wikipediaInfo.pageid;
+          const title = loc.wikipediaInfo.title;
+          const extract = loc.wikipediaInfo.extract;
           this.infoWindow.setContent(`
             <div class="info-content">
               <div class="info-name">${loc.name}</div>
@@ -131,9 +131,9 @@ class ViewModel {
                 </div>
               </div>
             </div>
-          `)
+          `);
         }
-      }
+      };
 
       if (loc.wikipediaInfo === undefined) {
         /* Find the wiki page within 200meter of the place */
@@ -141,23 +141,23 @@ class ViewModel {
                     "format=json&action=query&" +
                     "prop=pageimages|info|extracts&exlimit=1&explaintext=1&" +
                     "exintro=1&generator=geosearch&ggsradius=200&" +
-                    `ggscoord=${loc.lat}|${loc.lng}&pithumbsize=100`
+                    `ggscoord=${loc.lat}|${loc.lng}&pithumbsize=100`;
 
         axios.get(url)
           .then((response) => {
             for (let k in response.data.query.pages) {
-              const page =response.data.query.pages[k]
+              const page =response.data.query.pages[k];
               if (page.index === 0) {
-                loc.wikipediaInfo = page
+                loc.wikipediaInfo = page;
               }
             }
           }).catch(() => {
-            loc.wikipediaInfo = null
-          }).then(render)
+            loc.wikipediaInfo = null;
+          }).then(render);
       } else {
-        render()
+        render();
       }
-    }
+    };
 
     this.loadLocations = () => {
       this.loadingError(null);
@@ -179,7 +179,7 @@ class ViewModel {
         .then(() => {
           this.loadingLocations(false);
         });
-    }
+    };
 
     this.loadMap = () => {
       const el = document.querySelector(".map");
@@ -213,8 +213,8 @@ class ViewModel {
           });
           loc.marker = m;
           m.addListener("click", () => {
-            this.selectLocation(loc)
-          })
+            this.selectLocation(loc);
+          });
           this.markers.push(m);
         });
 
@@ -222,7 +222,7 @@ class ViewModel {
 
         this.infoWindow = new google.maps.InfoWindow({
           pixelOffset: { width: 0, height: -40}
-        })
+        });
       };
 
       const gmapScript = document.createElement("script");
@@ -232,7 +232,7 @@ class ViewModel {
       gmapScript.setAttribute("src", src);
 
       document.head.appendChild(gmapScript);
-    }
+    };
 
     this.updateMarkers = () => {
       if (!this.map) {
@@ -247,7 +247,7 @@ class ViewModel {
         loc.marker.setVisible(true);
       });
 
-    }
+    };
   }
 }
 
