@@ -202,6 +202,10 @@ class ViewModel {
         });
         this.map.fitBounds(this.bounds);
 
+        this.map.addListener("click", () => {
+          this.menuVisible(false);
+        });
+
         this.allLocations().forEach((loc) => {
           const m = new google.maps.Marker({
             position: loc,
