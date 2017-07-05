@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Meine's neighborhood map</title>
+    <script src="/bundle.js" defer></script>
+    <!-- Put some style here while the bundle is loading -->
+    <style>
+      .wrapper {
+        opacity: 0;
+      }
+      .loading-wrapper {
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 2;
+
+        font-family: sans-serif;
+        font-size: 24px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="loading-wrapper">
+      Loading application, please wait.
+    </div>
+    <div class="wrapper">
+      <div class="header">
+        <div class="header-title">
+          Meine's neighborhood locations map
+        </div>
+        <div class="header-bottom">
+          <div class="header-hamburger"
+               data-bind="click: toggleMenu">
+               <div class="header-hamburger-icon"></div>
+          </div>
+          <input type="text"
+                 placeholder="type here to filter locations"
+                 class="filter-field"
+                 data-bind="enable: ready, textInput: filter">
+        </div>
+      </div>
+      <div class="content">
+        <div class="list" data-bind="css: { visible: menuVisible}">
+          <div data-bind="visible: loadingLocations">
+            <div class="loading-spinner">
+              Loading...
+            </div>
+          </div>
+          <div data-bind="visible: loadingError">
+            <div class="loading-error">
+              <div>Oups, an error occured!</div>
+              <div class="loading-error-details"
+                   data-bind="text: loadingError"></div>
+            </div>
+          </div>
+          <div data-bind="visible: ready">
+            <ul data-bind="foreach: locations">
+              <li data-bind="text: name, click: $parent.selectLocation,
+                css: { selected: $data === $parent.selectedLocation() }"
+                class="list-item"></li>
+            </ul>
+          </div>
+          <div data-bind="visible: ready() && locations().length === 0"
+               class="list-empty">
+            No result.
+          </div>
+        </div>
+        <div class="map"></div>
+      </div>
+    </div>
+  </body>
+</html>
