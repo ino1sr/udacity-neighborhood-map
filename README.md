@@ -8,6 +8,9 @@ back in Japan. It includes a few locations I like.
 Each location shows the closest Wikipedia article it can find. If no article
 is geolocalized within 100m, then no article is shown.
 
+The application is visible for vieweing here:
+
+<https://ino1sr.github.io/udacity-neighborhood-map/build/>
 
 ## Commands
 
