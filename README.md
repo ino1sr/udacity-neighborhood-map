@@ -1,6 +1,17 @@
 # Udacity neighborhood map project
 
-## Run the project in development mode
+## Introduction
+
+Neighborood Map is a single page application featuring a map of my neighborhood
+back in Japan. It includes a few locations I like.
+
+Each location shows the closest Wikipedia article it can find. If no article
+is geolocalized within 100m, then no article is shown.
+
+
+## Commands
+
+### Run the project in development mode
 
 ```shell
 npm install
@@ -9,6 +20,15 @@ npm run server
 
 This will start the webpack development server on port 8080. It will
 listen on all interfaces to allow connection from remote devices (mobile...).
+
+## Build the project
+
+```shell
+npm install
+npm run build
+```
+
+This should create a `build` folder.
 
 ## Tools
 
@@ -51,3 +71,11 @@ of the marker. I thought it was cooler to not hardcode the wikipedia page id
 in `locations.json`.
 
 [1]: https://en.wikipedia.org/wiki/Flash_of_unstyled_content
+
+### Webpack
+
+Before starting the project, I took a great deal of time looking for and playing
+with "modern" build tools.
+
+In the end webpack might be overkill for this project as it build nearly
+nothing.
