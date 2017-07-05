@@ -5,6 +5,7 @@ module.exports = {
   entry: path.resolve(__dirname, 'src/app.js'),
   context: path.join(__dirname),
   output: {
+    path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js'
   },
   module: {

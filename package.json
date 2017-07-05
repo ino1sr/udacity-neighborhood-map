@@ -6,6 +6,7 @@
   "scripts": {
     "lint": "eslint --fix src",
     "server": "webpack-dev-server --host 0.0.0.0",
+    "build": "NODE_ENV=production webpack -p",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Meine Shiraishi",
