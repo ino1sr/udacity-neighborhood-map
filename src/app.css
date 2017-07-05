@@ -99,6 +99,8 @@ body, html {
 /* Filter field to search for locations */
 .filter-field {
   appearance: none;
+  border-radius: 0;
+  width: 220px;
   border: none;
   border-bottom: 1px dashed #53b8bd;
   background: black;
