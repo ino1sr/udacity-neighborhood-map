@@ -161,7 +161,7 @@ class ViewModel {
 
     this.loadLocations = () => {
       this.loadingError(null);
-      axios.get("/locations.json")
+      axios.get("locations.json")
         .then((response) => {
           // Convert array locations into objects
           this.allLocations(response.data.locations.map((loc) => {
